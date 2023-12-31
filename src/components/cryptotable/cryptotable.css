@@ -1,0 +1,89 @@
+.crypto-table {
+    width: 100%;
+    margin-top: 10px;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+.crypto-table th:first-child,
+.crypto-table td:first-child {
+    border-left: 1px solid #ffffff;
+}
+
+.crypto-table th:last-child,
+.crypto-table td:last-child {
+    border-right: 1px solid #ffffff;
+}
+
+.crypto-table thead {
+    background-color: #ffffff;
+}
+
+.crypto-table tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.price-up {
+    color: green;
+}
+
+.price-down {
+    color: red;
+}
+
+.div-bg {
+    margin-top: 50px;
+}
+.font-text {
+    color: rgb(39, 39, 39);
+    padding-top: 10px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.font-th {
+    color: rgb(184, 185, 185);
+}
+
+.font-names {
+    font-weight: 700;
+}
+.crypto-table-container {
+    overflow-x: auto;
+}
+.crypto-table tbody {
+    max-height: 400px; /* Adjust this value as needed */
+    width: 100%;
+}
+
+.crypto-table thead,
+.crypto-table tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.crypto-table {
+    width: 100%;
+    overflow-x: auto;
+}
+@media screen and (max-width: 800px) {
+    .crypto-table th,
+    .crypto-table td {
+        padding: 5px;
+        border-bottom: 1px solid #ffffff;
+        text-align: left;
+        width: 150px;
+    }
+}
+
+@media screen and (min-width: 600px) {
+    .crypto-table th,
+    .crypto-table td {
+        padding: 20px;
+        border-bottom: 1px solid #ffffff;
+        text-align: left;
+    }
+}
