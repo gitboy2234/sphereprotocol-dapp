@@ -15,7 +15,7 @@ function Sidebar() {
             .then((response) => {
                 const btcPriceInUSD = response.data.bitcoin.usd;
                 axios
-                    .get("http://localhost:3001/api/trending")
+                    .get("http://188.166.229.235:3001/api/trending")
                     .then((response) => {
                         const updatedCoins = response.data.coins.map((coin) => {
                             coin.priceInUSD =

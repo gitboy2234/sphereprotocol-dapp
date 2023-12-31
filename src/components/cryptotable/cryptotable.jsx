@@ -8,7 +8,7 @@ function Cryptotable() {
     const fetchTopCoins = async () => {
         try {
             const response = await axios.get(
-                "http://localhost:3001/api/top-coins"
+                "http://188.166.229.235:3001/api/top-coins"
             );
             setCryptoData(response.data.data); // Assuming the data is nested under response.data.data
         } catch (error) {
