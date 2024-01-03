@@ -49,7 +49,7 @@ function Dashboard() {
         // You can set a timer to update the prices every 30 minutes or so
         const interval = setInterval(() => {
             fetchPrices();
-        }, 10000);
+        }, 20000);
 
         return () => clearInterval(interval);
     }, []);

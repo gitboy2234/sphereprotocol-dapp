@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.98087894.css",
-    "main.js": "/static/js/main.ff190d61.js",
+    "main.js": "/static/js/main.21e260d0.js",
     "static/media/card chip.png": "/static/media/card chip.595d2c91e3b2244be923.png",
     "static/media/bnb.png": "/static/media/bnb.bde16b065581c005194b.png",
     "static/media/logo.png": "/static/media/logo.54d415294653a5779a00.png",
     "index.html": "/index.html",
     "main.98087894.css.map": "/static/css/main.98087894.css.map",
-    "main.ff190d61.js.map": "/static/js/main.ff190d61.js.map"
+    "main.21e260d0.js.map": "/static/js/main.21e260d0.js.map"
   },
   "entrypoints": [
     "static/css/main.98087894.css",
-    "static/js/main.ff190d61.js"
+    "static/js/main.21e260d0.js"
   ]
 }
