@@ -74,6 +74,30 @@
     width: 100%;
     overflow-x: auto;
 }
+
+/* cryptotable.css */
+/* DexScreenerEmbed.css */
+#dexscreener-embed {
+    position: relative;
+    width: 100%;
+    padding-bottom: 125%;
+}
+
+@media (min-width: 1400px) {
+    #dexscreener-embed {
+        padding-bottom: 55%;
+    }
+}
+
+#dexscreener-embed iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border: 0;
+}
+
 @media screen and (max-width: 800px) {
     .crypto-table th,
     .crypto-table td {

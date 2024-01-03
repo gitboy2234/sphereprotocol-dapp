@@ -5,17 +5,9 @@ function Cryptotable() {
     return (
         <div className="">
             <div className="margin-y">
-                <iframe
-                    style={{
-                        height: "1000px",
-                        width: "100%",
-                        borderRadius: "10px",
-                        allow: "clipboard-write",
-                    }}
-                    src="https://www.defined.fi/bsc/0x634e1205ab0316cae232f4b1c57b247d74d13da8?quoteToken=token0&embedded=1&hideTxTable=0&hideSidebar=0&embedColorMode=DEFAULT"
-                    id="defined-embed"
-                    title="Defined Embed"
-                />
+                <div id="dexscreener-embed">
+                    <iframe src="https://dexscreener.com/bsc/0x634E1205Ab0316CaE232F4B1C57b247d74D13da8?embed=1&theme=dark"></iframe>
+                </div>
             </div>
         </div>
     );
