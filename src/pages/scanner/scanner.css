@@ -1,0 +1,52 @@
+.font-global {
+    font-family: "Press Start 2P";
+}
+.input-container {
+    display: flex;
+    align-items: center;
+    background-color: black; /* Or any other color for the container */
+}
+
+.input-container input {
+    flex-grow: 1;
+    padding: 10px;
+    background-color: transparent;
+    color: white;
+    border: none;
+    border-bottom: 2px solid white; /* Bottom border style */
+    margin-right: 10px; /* Spacing between input and button */
+    font-size: 20px;
+    font-family: "Press Start 2P", sans-serif;
+}
+
+.input-container input::placeholder {
+    color: #ccc; /* Placeholder text color */
+}
+
+.input-container input:focus {
+    outline: none;
+    border-bottom-color: #00d084; /* Bottom border color when focused */
+}
+
+.input-container button {
+    padding: 10px 20px;
+    background-color: #00d084;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.font-margin {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 15px;
+}
+
+.font-title {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 25px;
+    color: rgb(97, 95, 95);
+}
+/* You can also add :hover styles for button or any other styling as needed */

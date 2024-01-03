@@ -12,7 +12,8 @@ main aside {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 88vh;
+    border-radius: 20px;
+    background-color: rgb(32, 32, 32);
 }
 
 /* Will be shown only on mpbile and tablets */
@@ -20,13 +21,16 @@ main aside {
 main aside button#close-btn {
     display: none;
 }
+.font-global {
+    font-family: "Press Start 2P";
+}
 
 main aside .sidebar a {
     display: flex;
     align-items: center;
     gap: 1.2rem;
     height: 4.2rem;
-    color: var(--color-gray-light);
+
     position: relative;
 }
 

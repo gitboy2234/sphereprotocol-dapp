@@ -1,10 +1,9 @@
-// Navbar.js
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./navbar.css";
 import logo from "../images/logo.png";
-import Sidebar from "../sidebar/sidebar";
+import SidebarSolo from "../sidebar/sidebarsolo";
 
-function Navbar() {
+function NavbarSolo() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
     return (
@@ -26,12 +25,11 @@ function Navbar() {
                     </div>
                 </div>
             </nav>
-            <Sidebar
+            <SidebarSolo
                 isOpen={isSidebarOpen}
                 setIsSidebarOpen={setIsSidebarOpen}
             />
         </div>
     );
 }
-
-export default Navbar;
+export default NavbarSolo;

@@ -2,43 +2,57 @@ import React, { useEffect, useState } from "react";
 import "./sidebar.css";
 import Dashboard from "../../pages/dashboard/dashboard";
 import axios from "axios";
-
+import { Link } from "react-router-dom";
 function Sidebar() {
     const [trending, setTrending] = useState([]);
 
     // Function to fetch trending coins
     const fetchTrendingCoins = () => {
-        axios
-            .get(
-                "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
-            )
-            .then((response) => {
-                const btcPriceInUSD = response.data.bitcoin.usd;
-                axios
-                    .get("http://188.166.229.235:3001/api/trending")
-                    .then((response) => {
-                        const updatedCoins = response.data.coins.map((coin) => {
-                            coin.priceInUSD =
-                                coin.item.price_btc * btcPriceInUSD;
-                            return coin;
-                        });
-                        setTrending(updatedCoins);
-                    })
-                    .catch((error) =>
-                        console.error("Error fetching trending coins:", error)
-                    );
-            })
-            .catch((error) =>
-                console.error("Error fetching BTC price:", error)
-            );
+        const storedTrending = localStorage.getItem("trendingCoins");
+        if (storedTrending) {
+            setTrending(JSON.parse(storedTrending));
+        } else {
+            axios
+                .get(
+                    "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd"
+                )
+                .then((response) => {
+                    const btcPriceInUSD = response.data.bitcoin.usd;
+                    axios
+                        .get("http://localhost:3001/api/trending")
+                        .then((response) => {
+                            const updatedCoins = response.data.coins.map(
+                                (coin) => {
+                                    coin.priceInUSD =
+                                        coin.item.price_btc * btcPriceInUSD;
+                                    return coin;
+                                }
+                            );
+                            setTrending(updatedCoins);
+                            localStorage.setItem(
+                                "trendingCoins",
+                                JSON.stringify(updatedCoins)
+                            );
+                        })
+                        .catch((error) =>
+                            console.error(
+                                "Error fetching trending coins:",
+                                error
+                            )
+                        );
+                })
+                .catch((error) =>
+                    console.error("Error fetching BTC price:", error)
+                );
+        }
     };
 
-    // Fetch and auto-update trending coins every minute
     useEffect(() => {
         fetchTrendingCoins();
         const interval = setInterval(() => {
+            localStorage.removeItem("trendingCoins"); // Clear stored data before fetching new
             fetchTrendingCoins();
-        }, 30000); // Update every minute
+        }, 240000); // Update every 2 minutes
 
         return () => clearInterval(interval);
     }, []);
@@ -90,23 +104,45 @@ function Sidebar() {
                     </button>
                     <div className="sidebar">
                         {/* Sidebar links */}
-                        <a href="/dashboard" className="active">
+                        <Link className="active" to="/dashboard">
                             <span className="material-symbols-sharp">
                                 dashboard
                             </span>
                             <h4>Dashboard</h4>
-                        </a>
-                        <a href="/exchange">
+                        </Link>
+                        <a href="/dexlimit">
                             <span className="material-symbols-sharp">
                                 currency_exchange
                             </span>
-                            <h4>Exchange</h4>
+                            <h4>DEX Limit</h4>
+                        </a>
+                        <a href="/swap">
+                            <span className="material-symbols-outlined">
+                                swap_horizontal_circle
+                            </span>
+                            <h4>Swap</h4>
+                        </a>
+                        <a href="/rugcheker">
+                            <span class="material-symbols-outlined">
+                                search_check
+                            </span>
+                            <h4>Rug checker</h4>
                         </a>
                         <a href="/wallet">
                             <span className="material-symbols-sharp">
                                 account_balance_wallet
                             </span>
                             <h4>Wallet</h4>
+                        </a>
+                        <a href="/locker">
+                            <span class="material-symbols-outlined">lock</span>
+                            <h4>Locker</h4>
+                        </a>
+                        <a href="/scan">
+                            <span class="material-symbols-outlined">
+                                monitoring
+                            </span>
+                            <h4>SphereScan</h4>
                         </a>
                     </div>
                 </aside>

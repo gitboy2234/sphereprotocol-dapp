@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./dashboard.css";
 import btc from "../../components/images/BTC.png";
 import chip from "../../components/images/card chip.png";
@@ -22,27 +22,40 @@ function Dashboard() {
                     "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum,tether,wbnb&vs_currencies=usd"
                 )
                 .then((response) => {
-                    setCryptoPrices({
+                    const prices = {
                         bitcoin: response.data.bitcoin.usd,
                         ethereum: response.data.ethereum.usd,
                         tether: response.data.tether.usd,
                         wbnb: response.data.wbnb.usd,
-                    });
+                    };
+                    setCryptoPrices(prices);
+                    localStorage.setItem(
+                        "cryptoPrices",
+                        JSON.stringify(prices)
+                    );
                 })
                 .catch((error) =>
                     console.error("Error fetching crypto prices:", error)
                 );
         };
 
-        // Fetch prices immediately and then set an interval
-        fetchPrices();
-        const interval = setInterval(fetchPrices, 30000); // Update every minute
+        const storedPrices = localStorage.getItem("cryptoPrices");
+        if (storedPrices) {
+            setCryptoPrices(JSON.parse(storedPrices));
+        } else {
+            fetchPrices();
+        }
 
-        // Cleanup interval on component unmount
+        // You can set a timer to update the prices every 30 minutes or so
+        const interval = setInterval(() => {
+            fetchPrices();
+        }, 10000);
+
         return () => clearInterval(interval);
     }, []);
+
     return (
-        <div className="overflow">
+        <div className="overflow ">
             <section className="middle ">
                 <div className="cards">
                     <div className="card">
@@ -70,16 +83,13 @@ function Dashboard() {
                         <div className="bottom">
                             <div className="left">
                                 <small></small>
-                                <h5></h5>
                             </div>
                             <div className="right">
                                 <div className="expiry">
                                     <small></small>
-                                    <h5></h5>
                                 </div>
                                 <div className="cvv">
                                     <small></small>
-                                    <h5></h5>
                                 </div>
                             </div>
                         </div>
@@ -108,16 +118,13 @@ function Dashboard() {
                         <div className="bottom">
                             <div className="left">
                                 <small></small>
-                                <h5></h5>
                             </div>
                             <div class="right">
                                 <div className="expiry">
                                     <small></small>
-                                    <h5></h5>
                                 </div>
                                 <div className="cvv">
                                     <small></small>
-                                    <h5></h5>
                                 </div>
                             </div>
                         </div>
@@ -146,16 +153,13 @@ function Dashboard() {
                         <div className="bottom">
                             <div class="left">
                                 <small></small>
-                                <h5></h5>
                             </div>
                             <div className="right">
                                 <div class="expiry">
                                     <small></small>
-                                    <h5></h5>
                                 </div>
                                 <div className="cvv">
                                     <small></small>
-                                    <h5></h5>
                                 </div>
                             </div>
                         </div>
@@ -164,7 +168,7 @@ function Dashboard() {
             </section>
 
             <section className="middle ">
-                <div className=" ">
+                <div className="">
                     <Cryptotable />
                 </div>
             </section>

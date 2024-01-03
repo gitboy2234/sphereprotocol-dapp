@@ -1,11 +1,11 @@
 /* ROOT CSS VARIABLES */
 
 :root {
-    --color-white: #ffffff;
-    --color-light: #f0eff5;
-    --color-gray-light: #86848c;
-    --color-gray-dark: #56555e;
-    --color-dark: #27282f;
+    --color-white: #1d1c1c;
+    --color-light: #000000;
+    --color-gray-light: #fcfbff;
+    --color-gray-dark: #d7d7d8;
+    --color-dark: #dddddd;
     --color-primary: rgb(71, 7, 234);
     --color-success: rgb(34, 282, 75);
     --color-danger: rgb(255, 67, 54);
@@ -30,10 +30,10 @@
 /* dark theme variables */
 
 .dark-theme {
-    --color-white: #131316;
-    --color-light: #23232a;
+    --color-white: #383636;
+    --color-light: rgb(0, 0, 0);
     --color-dark: #ddd;
-    --color-gray-dark: #adacb5;
+    --color-gray-dark: #e9e4e4;
 }
 
 /*  */

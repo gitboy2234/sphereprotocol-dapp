@@ -19,29 +19,6 @@ nav img.logo {
     width: 4rem;
 }
 
-nav .search-bar {
-    background: var(--color-light);
-    padding: var(--padding-2) var(--card-padding);
-    width: 32vw;
-    border-radius: var(--border-radius-2);
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    color: var(--color-gray-light);
-    position: absolute;
-    left: 15%;
-}
-
-nav .search-bar input[type="search"] {
-    color: var(--color-dark);
-    background: transparent;
-    width: 100%;
-}
-
-nav .search-bar input[type="search"]::placeholder {
-    color: var(--color-gray-dark);
-}
-
 nav .profile-area {
     display: flex;
     align-items: center;
@@ -95,7 +72,7 @@ nav .profile-area button {
     display: flex;
 }
 .font {
-    color: rgb(87, 184, 230);
+    color: rgb(248, 248, 248);
     font-size: 25px;
     margin-top: 7px;
 }
