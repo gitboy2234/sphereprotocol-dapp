@@ -8,6 +8,10 @@ import Maintenance from "./pages/maintenance";
 function App() {
     let element = useRoutes([
         {
+            path: "/",
+            element: <Navbar />,
+        },
+        {
             path: "/dashboard",
             element: <Navbar />,
         },
