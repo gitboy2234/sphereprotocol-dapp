@@ -2,7 +2,8 @@
 
 nav {
     width: 100%;
-    background: var(--color-white);
+
+    background-color: rgb(71, 70, 70);
     padding: 1rem 0;
 }
 
@@ -143,7 +144,7 @@ nav .profile-area button {
 
 /* ===================MEDIA QUERIES FOR PHONEs======= */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 640px) {
     nav .profile-area {
         gap: 2.6rem;
     }

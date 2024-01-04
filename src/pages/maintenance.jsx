@@ -2,8 +2,10 @@ import React from "react";
 
 function Maintenance() {
     return (
-        <div>
-            <div>PAGE NOT YET AVAILABLE!</div>
+        <div className="flex justify-center items-center h-screen">
+            <div>
+                <span className="text-4xl">PAGE NOT YET AVAILABLE!</span>
+            </div>
         </div>
     );
 }

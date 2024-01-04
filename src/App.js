@@ -2,6 +2,7 @@ import "./App.css";
 import Navbar from "./components/navbar/navbar";
 import { useRoutes } from "react-router-dom";
 import Maintenance from "./pages/maintenance";
+
 // import NavbarSolo from "./components/navbar/navbarsolo";
 
 function App() {
@@ -35,7 +36,7 @@ function App() {
             element: <Maintenance />,
         },
     ]);
-    return <div className="App ">{element}</div>;
+    return <div className="App bg-black ">{element}</div>;
 }
 
 export default App;
