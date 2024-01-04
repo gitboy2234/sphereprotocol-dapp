@@ -22,19 +22,21 @@ function Navbar() {
     const [userData, setUserData] = useState(null);
     const [blockieImage, setBlockieImage] = useState("");
     const handleConnectWallet = async () => {
-        if (window.ethereum) {
+        if (window.ethereum && typeof window.ethereum.request === "function") {
             try {
                 const accounts = await window.ethereum.request({
                     method: "eth_requestAccounts",
                 });
                 setAccount(accounts[0]);
                 setIsConnected(true);
-                setBlockieImage(makeBlockie(accounts[0])); // Generate blockie
+                setBlockieImage(makeBlockie(accounts[0]));
             } catch (error) {
                 console.error(error);
             }
         } else {
-            alert("MetaMask is not installed!");
+            alert(
+                "MetaMask is not installed or your browser does not support Ethereum wallets."
+            );
         }
     };
 
@@ -50,33 +52,30 @@ function Navbar() {
     };
 
     useEffect(() => {
-        // Check if wallet is already connected
         const checkIfWalletIsConnected = async () => {
-            if (window.ethereum) {
+            if (
+                window.ethereum &&
+                typeof window.ethereum.request === "function"
+            ) {
                 const accounts = await window.ethereum.request({
                     method: "eth_accounts",
                 });
                 if (accounts.length > 0) {
                     setAccount(accounts[0]);
                     setIsConnected(true);
-                    setBlockieImage(makeBlockie(accounts[0])); // Regenerate blockie
-                    localStorage.setItem("ethAddress", accounts[0]); // Store address in localStorage
-                } else {
-                    // Check localStorage
-                    const storedAddress = localStorage.getItem("ethAddress");
-                    if (storedAddress) {
-                        setAccount(storedAddress);
-                        setIsConnected(true); // Optionally, you can set this to false to require manual reconnection
-                        setBlockieImage(makeBlockie(storedAddress)); // Regenerate blockie from stored address
-                    }
+                    setBlockieImage(makeBlockie(accounts[0]));
+                    localStorage.setItem("ethAddress", accounts[0]);
                 }
+            } else {
+                console.log(
+                    "Ethereum wallet integration not supported on this browser."
+                );
             }
         };
 
         checkIfWalletIsConnected();
 
-        // Listen for account changes
-        window.ethereum?.on("accountsChanged", (accounts) => {
+        const handleAccountsChanged = (accounts) => {
             if (accounts.length > 0) {
                 setAccount(accounts[0]);
                 setIsConnected(true);
@@ -84,10 +83,27 @@ function Navbar() {
                 localStorage.setItem("ethAddress", accounts[0]);
             } else {
                 setIsConnected(false);
-                localStorage.removeItem("ethAddress"); // Clear stored address
+                localStorage.removeItem("ethAddress");
             }
-        });
+        };
+
+        if (window.ethereum && typeof window.ethereum.on === "function") {
+            window.ethereum.on("accountsChanged", handleAccountsChanged);
+        }
+
+        return () => {
+            if (
+                window.ethereum &&
+                typeof window.ethereum.removeListener === "function"
+            ) {
+                window.ethereum.removeListener(
+                    "accountsChanged",
+                    handleAccountsChanged
+                );
+            }
+        };
     }, []);
+
     return (
         <div className="">
             <nav className="">
