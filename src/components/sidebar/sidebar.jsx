@@ -21,13 +21,14 @@ function Sidebar() {
                     axios
                         .get("https://dapp.sphereprotocol.com/api/trending")
                         .then((response) => {
-                            const updatedCoins = response.data.coins.map(
-                                (coin) => {
+                            // Modify here: Slice the response array to include only the first 13 elements
+                            const updatedCoins = response.data.coins
+                                .slice(0, 13)
+                                .map((coin) => {
                                     coin.priceInUSD =
                                         coin.item.price_btc * btcPriceInUSD;
                                     return coin;
-                                }
-                            );
+                                });
                             setTrending(updatedCoins);
                             localStorage.setItem(
                                 "trendingCoins",
