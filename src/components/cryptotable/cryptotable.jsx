@@ -5,7 +5,9 @@ function Cryptotable() {
     return (
         <div className="">
             <div className="margin-y">
-                <div id="dexscreener-embed" className="relative w-full">
+                <div
+                    id="dexscreener-embed"
+                    className="relative w-full rounded-lg">
                     <style>
                         {`
                     #dexscreener-embed { padding-bottom: 125%; }
@@ -19,6 +21,8 @@ function Cryptotable() {
                         top: 0; 
                         left: 0; 
                         border: 0; 
+                        border-radius: 15px
+                       
                     }
                 `}
                     </style>

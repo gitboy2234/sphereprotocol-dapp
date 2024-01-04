@@ -1,36 +1,49 @@
 import React from "react";
-import { FaTwitter } from "react-icons/fa"; // Ensure this is the correct import for the Twitter icon
-import { FaTelegram } from "react-icons/fa";
+import { FaTwitter, FaTelegram } from "react-icons/fa";
 import { BsGlobe } from "react-icons/bs";
+import MyBannerSvg from "../images/SPHERE PROTOCOL.gif";
 
 function Footer() {
     return (
-        <div className="flex flex-col justify-center items-center h-32 text-white text-center">
-            <div className="flex justify-center items-center h-24 space-x-7">
-                <a
-                    href="https://t.me/Sphereprotocol"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mx-2 text-4xl">
-                    <FaTelegram />
-                </a>
-                <a
-                    href="http://twitter.com/spherebsc"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mx-2 text-4xl">
-                    <FaTwitter />
-                </a>
-                <a
-                    href="https://sphereprotocol.com/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mx-2 text-4xl">
-                    <BsGlobe />
-                </a>
-            </div>
-            <div className="mt-2">
-                ©2024 Sphere Protocol | All Rights Reserved
+        <div className="flex flex-col justify-center items-center h-96 text-white text-center ">
+            <div
+                className="relative svg-banner-container  "
+                style={{ height: "300px" }}>
+                <img
+                    src={MyBannerSvg}
+                    alt="Banner"
+                    style={{
+                        width: "1300px",
+                        height: "70%",
+                        borderRadius: "20px",
+                    }}
+                />
+                <div className=" bottom-10 left-0 right-0 flex justify-center items-center space-x-7 mt-5">
+                    <a
+                        href="https://t.me/Sphereprotocol"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-4xl">
+                        <FaTelegram />
+                    </a>
+                    <a
+                        href="http://twitter.com/spherebsc"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-4xl">
+                        <FaTwitter />
+                    </a>
+                    <a
+                        href="https://sphereprotocol.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-4xl">
+                        <BsGlobe />
+                    </a>
+                </div>
+                <div className=" bottom-2 left-0 right-0 mt-5">
+                    ©2024 Sphere Protocol | All Rights Reserved
+                </div>
             </div>
         </div>
     );
