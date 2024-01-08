@@ -6,8 +6,7 @@ import Sidebar from "../sidebar/sidebar";
 import Footer from "../footer/footer";
 import Grid from "@mui/material/Unstable_Grid2";
 import Button from "@mui/material/Button";
-import { Link } from "react-router-dom";
-import axios from "axios";
+
 import makeBlockie from "ethereum-blockies-base64";
 function Navbar() {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -19,7 +18,7 @@ function Navbar() {
     };
     const [isConnected, setIsConnected] = useState(false);
     const [account, setAccount] = useState("");
-    const [userData, setUserData] = useState(null);
+
     const [blockieImage, setBlockieImage] = useState("");
     const handleConnectWallet = async () => {
         if (window.ethereum && typeof window.ethereum.request === "function") {
@@ -40,16 +39,16 @@ function Navbar() {
         }
     };
 
-    const fetchUserData = async (address) => {
-        try {
-            const response = await axios.get(
-                `[Your Backend URL]/api/path?address=${address}`
-            );
-            setUserData(response.data);
-        } catch (error) {
-            console.error("Error fetching user data:", error);
-        }
-    };
+    // const fetchUserData = async (address) => {
+    //     try {
+    //         const response = await axios.get(
+    //             `[Your Backend URL]/api/path?address=${address}`
+    //         );
+    //         setUserData(response.data);
+    //     } catch (error) {
+    //         console.error("Error fetching user data:", error);
+    //     }
+    // };
 
     useEffect(() => {
         const checkIfWalletIsConnected = async () => {

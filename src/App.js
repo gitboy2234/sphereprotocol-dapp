@@ -2,7 +2,7 @@ import "./App.css";
 import Navbar from "./components/navbar/navbar";
 import { useRoutes } from "react-router-dom";
 import Maintenance from "./pages/maintenance";
-
+import Scanner from "../src/pages/scanner/scanner";
 // import NavbarSolo from "./components/navbar/navbarsolo";
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
         },
         {
             path: "/rugcheker",
-            element: <Maintenance />,
+            element: <Scanner />,
         },
         {
             path: "/locker",
