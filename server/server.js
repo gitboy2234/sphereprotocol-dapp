@@ -4,7 +4,7 @@ const cors = require("cors");
 const app = express();
 
 const corsOptions = {
-    origin: "http://localhost:3000", // or your specific origin
+    origin: "https://dapp.sphereprotocol.com", // or your specific origin
     optionsSuccessStatus: 200,
 };
 

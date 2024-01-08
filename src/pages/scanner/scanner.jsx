@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-
 import "./scanner.css";
-
+import { Link } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Highcharts from "highcharts";
 import variablePie from "highcharts/modules/variable-pie.js";
 import HC_accessibility from "highcharts/modules/accessibility";
+import { IoArrowBackCircle } from "react-icons/io5";
 HC_accessibility(Highcharts);
 variablePie(Highcharts);
 function Scanner() {
@@ -18,10 +18,8 @@ function Scanner() {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState("");
     const [network, setNetwork] = useState("BSC");
-
     const [tokenDetails, setTokenDetails] = useState(null);
     const [hasInput, setHasInput] = useState(false);
-
     const [hasScanned, setHasScanned] = useState(false);
     const chartContainerRef = useRef(null);
     const chartInstance = useRef(null);
@@ -281,7 +279,7 @@ function Scanner() {
         setIsLoading(true);
         try {
             const response = await fetch(
-                `http://localhost:3001/token-security?network=${network}&contractAddresses=${contractAddress}`
+                `https://dapp.sphereprotocol.com/token-security?network=${network}&contractAddresses=${contractAddress}`
             );
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
@@ -336,7 +334,12 @@ function Scanner() {
     return (
         <div>
             <div className="font-global">
-                <div className="relative mt-10 px-2 w-full ">
+                <div className="relative mt-10 px-2 w-full flex ">
+                    <div className="my-auto     ">
+                        <Link to="/dashboard">
+                            <IoArrowBackCircle size={45} />
+                        </Link>
+                    </div>
                     <div className="h-3/4 border-2 div-box rounded-xl mx-auto sm:w-full md:w-3/4 lg:w-1/2 lg:ml-[300px] xl:ml-[310px] 2xl:ml-[480px] py-5 shadow-2xl ">
                         <div className="mx-5 my-5 sm:shadow-2xl md:shadow-none">
                             <Box

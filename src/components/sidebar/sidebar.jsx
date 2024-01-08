@@ -19,7 +19,7 @@ function Sidebar() {
                 .then((response) => {
                     const btcPriceInUSD = response.data.bitcoin.usd;
                     axios
-                        .get("http://localhost:3001/api/trending")
+                        .get("https://dapp.sphereprotocol.com/api/trending")
                         .then((response) => {
                             // Modify here: Slice the response array to include only the first 13 elements
                             const updatedCoins = response.data.coins
